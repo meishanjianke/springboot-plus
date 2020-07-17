@@ -16,7 +16,7 @@
 
 package com.springboot.plus.generator.config;
 
-import io.geekidea.springbootplus.generator.constant.GeneratorConstant;
+import com.springboot.plus.generator.constant.GeneratorConstant;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

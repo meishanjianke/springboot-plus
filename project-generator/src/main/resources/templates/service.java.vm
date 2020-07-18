@@ -56,7 +56,7 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
      * @return
      * @throws Exception
      */
-    ${entity}${cfg.queryVo} get${entity}ById(Serializable id) throws Exception;
+    ${entity}${cfg.queryVO} get${entity}ById(Long id) throws Exception;
     #end
 
     /**
@@ -66,7 +66,7 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
      * @return
      * @throws Exception
      */
-    Paging<${entity}${cfg.queryVo}> get${entity}PageList(${entity}${cfg.pageParam} ${cfg.entityObjectName}${cfg.pageParam}) throws Exception;
+    Paging<${entity}${cfg.queryVO}> get${entity}PageList(${entity}${cfg.pageParam} ${cfg.entityObjectName}${cfg.pageParam}) throws Exception;
 #end
 
 }

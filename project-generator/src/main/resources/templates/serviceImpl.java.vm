@@ -59,21 +59,21 @@ public class ${table.serviceImplName} extends BaseServiceImpl<${table.mapperName
 
     #if(${cfg.generatorStrategy} != 'SINGLE')
     @Override
-    public ${entity}${cfg.queryVo} get${entity}ById(Serializable id) throws Exception {
+    public ${entity}${cfg.queryVO} get${entity}ById(Long id) throws Exception {
     return ${cfg.mapperObjectName}.get${entity}ById(id);
     }
 
     #end
     @Override
-    public Paging<${entity}${cfg.queryVo}> get${entity}PageList(${entity}${cfg.pageParam} ${cfg.entityObjectName}${cfg.pageParam}) throws Exception {
-        Page<${entity}${cfg.queryVo}> page = new PageInfo<>(${cfg.entityObjectName}${cfg.pageParam}, OrderItem.desc(getLambdaColumn(${entity}::getCreateTime)));
+    public Paging<${entity}${cfg.queryVO}> get${entity}PageList(${entity}${cfg.pageParam} ${cfg.entityObjectName}${cfg.pageParam}) throws Exception {
+        Page<${entity}${cfg.queryVO}> page = new PageInfo<>(${cfg.entityObjectName}${cfg.pageParam}, OrderItem.desc(getLambdaColumn(${entity}::getCreateTime)));
     #if(${cfg.generatorStrategy} != 'SINGLE')
-        IPage<${entity}${cfg.queryVo}> iPage = ${cfg.mapperObjectName}.get${entity}PageList(page, ${cfg.entityObjectName}${cfg.pageParam});
+        IPage<${entity}${cfg.queryVO}> iPage = ${cfg.mapperObjectName}.get${entity}PageList(page, ${cfg.entityObjectName}${cfg.pageParam});
     #else
         LambdaQueryWrapper<${entity}> wrapper = new LambdaQueryWrapper<>();
-        IPage<${entity}${cfg.queryVo}> iPage = ${cfg.mapperObjectName}.selectPage(page, wrapper);
+        IPage<${entity}${cfg.queryVO}> iPage = ${cfg.mapperObjectName}.selectPage(page, wrapper);
     #end
-        return new Paging<${entity}${cfg.queryVo}>(iPage);
+        return new Paging<${entity}${cfg.queryVO}>(iPage);
     }
 #end
 

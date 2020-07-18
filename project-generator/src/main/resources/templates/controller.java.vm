@@ -17,9 +17,9 @@ import ${cfg.apiResultClass};
 import ${cfg.pagingClass};
 import ${cfg.idParamClass};
 #if(${cfg.operationLog})
-import io.geekidea.springbootplus.framework.log.annotation.Module;
-import io.geekidea.springbootplus.framework.log.annotation.OperationLog;
-import io.geekidea.springbootplus.framework.log.enums.OperationLogType;
+import com.springboot.plus.common.log.annotation.Module;
+import com.springboot.plus.common.log.annotation.OperationLog;
+import com.springboot.plus.common.log.enums.OperationLogType;
 #end
 #if(${cfg.paramValidation})
 import ${cfg.validatorAddPackage};
@@ -130,14 +130,14 @@ public class ${table.controllerName} {
 #if(${cfg.operationLog})
     @OperationLog(name = "$!{table.comment}详情", type = OperationLogType.INFO)
 #end
-    @ApiOperation(value = "$!{table.comment}详情", response = ${entity}${cfg.queryVo}.class)
-    public ApiResult<${entity}${cfg.queryVo}> get${entity}(@PathVariable("id") Long id) throws Exception {
+    @ApiOperation(value = "$!{table.comment}详情", response = ${entity}${cfg.queryVO}.class)
+    public ApiResult<${entity}${cfg.queryVO}> get${entity}(@PathVariable("id") Long id) throws Exception {
 #if(${cfg.generatorStrategy} == 'SINGLE')
-        ${entity}${cfg.queryVo} ${cfg.entityObjectName}${cfg.queryVo} = ${cfg.serviceObjectName}.getById(id);
+        ${entity}${cfg.queryVO} ${cfg.entityObjectName}${cfg.queryVO} = ${cfg.serviceObjectName}.getById(id);
 #else
-        ${entity}${cfg.queryVo} ${cfg.entityObjectName}${cfg.queryVo} = ${cfg.serviceObjectName}.get${entity}ById(id);
+        ${entity}${cfg.queryVO} ${cfg.entityObjectName}${cfg.queryVO} = ${cfg.serviceObjectName}.get${entity}ById(id);
 #end
-        return ApiResult.ok(${cfg.entityObjectName}${cfg.queryVo});
+        return ApiResult.ok(${cfg.entityObjectName}${cfg.queryVO});
     }
 
     /**
@@ -150,9 +150,9 @@ public class ${table.controllerName} {
 #if(${cfg.operationLog})
     @OperationLog(name = "$!{table.comment}分页列表", type = OperationLogType.PAGE)
 #end
-    @ApiOperation(value = "$!{table.comment}分页列表", response = ${entity}${cfg.queryVo}.class)
-    public ApiResult<Paging<${entity}${cfg.queryVo}>> get${entity}PageList(#if(${cfg.paramValidation})@Validated #end@RequestBody ${entity}${cfg.pageParam} ${cfg.entityObjectName}${cfg.pageParam}) throws Exception {
-        Paging<${entity}${cfg.queryVo}> paging = ${cfg.entityObjectName}Service.get${entity}PageList(${cfg.entityObjectName}${cfg.pageParam});
+    @ApiOperation(value = "$!{table.comment}分页列表", response = ${entity}${cfg.queryVO}.class)
+    public ApiResult<Paging<${entity}${cfg.queryVO}>> get${entity}PageList(#if(${cfg.paramValidation})@Validated #end@RequestBody ${entity}${cfg.pageParam} ${cfg.entityObjectName}${cfg.pageParam}) throws Exception {
+        Paging<${entity}${cfg.queryVO}> paging = ${cfg.entityObjectName}Service.get${entity}PageList(${cfg.entityObjectName}${cfg.pageParam});
         return ApiResult.ok(paging);
     }
 #end

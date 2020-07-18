@@ -67,6 +67,10 @@ public class GeneratorConfig {
      */
     private boolean generatorQueryVo = true;
     /**
+     * 是否生成dto
+     */
+    private boolean generatorDTO = true;
+    /**
      * 是否生成Shiro RequiresPermissions 注解
      */
     private boolean requiresPermissions = true;

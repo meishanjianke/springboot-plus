@@ -43,10 +43,10 @@ public class SpringBootPlusGenerator {
 
         // 设置基本信息
         generatorProperties
-                .setMavenModuleName("example")
+                .setMavenModuleName("project-example")
                 .setParentPackage("com.example")
                 .setModuleName("foobar")
-                .setAuthor("geekidea")
+                .setAuthor("shenbin")
                 .setFileOverride(true);
 
         // 设置表信息
@@ -58,13 +58,13 @@ public class SpringBootPlusGenerator {
         generatorProperties.getDataSourceConfig()
                 .setDbType(DbType.MYSQL)
                 .setUsername("root")
-                .setPassword("root")
+                .setPassword("admin")
                 .setDriverName("com.mysql.jdbc.Driver")
-                .setUrl("jdbc:mysql://localhost:3306/spring_boot_plus?useUnicode=true&characterEncoding=UTF-8&useSSL=false");
+                .setUrl("jdbc:mysql://localhost:3306/sys?useUnicode=true&characterEncoding=UTF-8&useSSL=false");
 
         // 生成配置
         generatorProperties.getGeneratorConfig()
-                .setGeneratorStrategy(GeneratorStrategy.SINGLE)
+                .setGeneratorStrategy(GeneratorStrategy.ALL)
                 .setGeneratorEntity(true)
                 .setGeneratorController(true)
                 .setGeneratorService(true)
@@ -77,6 +77,7 @@ public class SpringBootPlusGenerator {
                 .setPageListOrder(true)
                 .setParamValidation(true)
                 .setSwaggerTags(true)
+                .setGeneratorDTO(true)
                 .setOperationLog(true);
 
         // 全局配置

@@ -17,6 +17,7 @@
         <module>project-start</module>
         <module>project-model</module>
         <module>project-generator</module>
+        <module>project-example</module>
     </modules>
 
     <properties>

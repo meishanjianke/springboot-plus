@@ -263,6 +263,9 @@ public class CodeGenerator {
                 // 响应结果包路径
                 String queryVoPackage = parentPackage + finalModuleName + StringPool.DOT + GeneratorConstant.VO;
                 map.put("queryVoPackage", queryVoPackage);
+                // dto包路径
+                String dtoPackage = parentPackage + finalModuleName + StringPool.DOT + GeneratorConstant.PATH_DTO;
+                map.put("dtoPackage", dtoPackage);
                 // 响应结果类路径
                 map.put("queryVoClass", queryVoPackage + StringPool.DOT + entityName + GeneratorConstant.QUERY_VO);
                 // 实体对象名称
@@ -294,10 +297,11 @@ public class CodeGenerator {
                 map.put("validatorUpdatePackage", GeneratorConstant.VALIDATOR_UPDATE_PACKAGE);
                 // 如果是但表模式，queryVO值为null
                 if (GeneratorStrategy.SINGLE == generatorStrategy) {
-                    map.put("queryVo", "");
+                    map.put("queryVO", "");
                 } else {
-                    map.put("queryVo", GeneratorConstant.QUERY_VO);
+                    map.put("queryVO", GeneratorConstant.QUERY_VO);
                 }
+                map.put("DTO", GeneratorConstant.DTO);
                 map.put("generatorQueryVo", generatorConfig.isGeneratorQueryVo());
                 map.put("generatorPageParam", generatorConfig.isGeneratorPageParam());
                 map.put("pageListOrder", generatorConfig.isPageListOrder());
@@ -352,6 +356,17 @@ public class CodeGenerator {
                 public String outputFile(TableInfo tableInfo) {
                     return finalJavaOutputDir + File.separator + parentPackagePath + finalModulePath + File.separator + GeneratorConstant.VO +
                             File.separator + tableInfo.getEntityName() + GeneratorConstant.QUERY_VO + StringPool.DOT_JAVA;
+                }
+            });
+        }
+
+        // 自定义queryVo模板
+        if (generatorConfig.isGeneratorDTO()) {
+            focList.add(new FileOutConfig(GeneratorConstant.DTO_TEMPLATE_PATH) {
+                @Override
+                public String outputFile(TableInfo tableInfo) {
+                    return finalJavaOutputDir + File.separator + parentPackagePath + finalModulePath + File.separator + GeneratorConstant.PATH_DTO +
+                            File.separator + tableInfo.getEntityName() + GeneratorConstant.DTO + StringPool.DOT_JAVA;
                 }
             });
         }

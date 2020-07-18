@@ -23,8 +23,8 @@ import java.util.Date;
 @Data
 @Accessors(chain = true)
 #end
-@ApiModel(value = "${entity}${cfg.queryVo}对象")
-public class ${entity}${cfg.queryVo} implements Serializable {
+@ApiModel(value = "${entity}${cfg.queryVO}对象")
+public class ${entity}${cfg.queryVO} implements Serializable {
     private static final long serialVersionUID = 1L;
 ## ----------  BEGIN 字段循环遍历  ----------
 #foreach($field in ${table.fields})
